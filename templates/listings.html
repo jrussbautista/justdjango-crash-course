@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container mx-auto">
+  <div class="p-4 flex justify-end">
+    <a
+      class="bg-blue-500 inline-block py-2 px-4 rounded text-white"
+      href="/listings/create"
+      >Create Listing</a
+    >
+  </div>
+  {% for listing in listings %}
+  <div class="mb-3 p-4 border-b">
+    <h3>{{ listing.title }}</h3>
+    <img
+      width="200"
+      height="200"
+      src="{{ listing.image.url }}"
+      alt="{{ listing.title }}"
+      class="mb-1"
+    />
+    <p class="text-blue-500 mb-1">${{ listing.price }}</p>
+    <a
+      class="bg-blue-500 inline-block py-2 px-4 rounded text-white"
+      href="/listings/{{ listing.id }}"
+      >View Details</a
+    >
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}
